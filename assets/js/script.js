@@ -97,3 +97,28 @@ document.addEventListener("DOMContentLoaded", function () {
         loop: true
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("cert-modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".close");
+
+    // Open modal when an image is clicked
+    document.querySelectorAll(".cert-img").forEach(img => {
+        img.addEventListener("click", function () {
+            modal.style.display = "flex";
+            modalImg.src = this.dataset.src;
+        });
+    });
+
+    // Close modal when clicking on close button
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
